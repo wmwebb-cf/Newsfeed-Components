@@ -37,9 +37,9 @@ const data = [
         mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma
         and Parvati Sorting Hat Minister of Magic blue turban remember my last.`,
 
-    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
-        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
-        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
@@ -66,8 +66,8 @@ const data = [
         consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
 
-    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
-        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
@@ -88,8 +88,8 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -102,7 +102,55 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+*/
+const article = document.createElement('div');
+article.classList.add('article');
 
+const articles = document.querySelector('.articles');
+
+const articleCreate = (objEl) => {
+
+  const artTitle = document.createElement('h2');
+  artTitle.classList.add('title');
+  artTitle.textContent = objEl.title;
+
+  const artDate = document.createElement('p');
+  artDate.classList.add('date');
+  artDate.textContent = objEl.date;
+
+  const paraOne = document.createElement('p');
+  paraOne.textContent = objEl.firstParagraph;
+
+  const paraTwo = document.createElement('p');
+  paraTwo.textContent = objEl.secondParagraph;
+
+  const paraThree = document.createElement('p');
+  paraThree.textContent = objEl.thirdParagraph
+
+  const expandBtn = document.createElement('span');
+  expandBtn.classList.add('expandButton');
+
+  expandBtn.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  article.appendChild(artTitle);
+  article.appendChild(artDate);
+  article.appendChild(paraOne);
+  article.appendChild(paraTwo);
+  article.appendChild(paraThree);
+  article.appendChild(expandBtn);
+  // articles.appendChild(article);
+  return article;
+}
+
+data.forEach((item) => {
+  articleCreate(item);
+  articles.appendChild(article);
+});
+
+
+/*
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
