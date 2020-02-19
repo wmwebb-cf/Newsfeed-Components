@@ -85,6 +85,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Added Article',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+
+    thirdParagraph: `The best Lorem Ipsum Generator in all the sea! Heave this scurvy copyfiller fer yar next adventure and cajol yar clients into walking the plank with ev'ry layout! Configure above, then get yer pirate ipsum...own the high seas, arg!`
   }
 ];
 
@@ -103,12 +116,13 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 */
-const article = document.createElement('div');
-article.classList.add('article');
 
 const articles = document.querySelector('.articles');
 
 const articleCreate = (objEl) => {
+
+  const article = document.createElement('div');
+  article.classList.add('article');
 
   const artTitle = document.createElement('h2');
   artTitle.classList.add('title');
@@ -129,8 +143,9 @@ const articleCreate = (objEl) => {
 
   const expandBtn = document.createElement('span');
   expandBtn.classList.add('expandButton');
+  expandBtn.setAttribute('style', 'text-align: center; height: 100%; width: 100%; border-radius: 50%; background: none');
 
-  expandBtn.addEventListener('click', () => {
+  expandBtn.addEventListener('click', (event) => {
     article.classList.toggle('article-open');
   })
 
@@ -140,13 +155,13 @@ const articleCreate = (objEl) => {
   article.appendChild(paraTwo);
   article.appendChild(paraThree);
   article.appendChild(expandBtn);
-  // articles.appendChild(article);
+
   return article;
 }
 
 data.forEach((item) => {
-  articleCreate(item);
-  articles.appendChild(article);
+  const newArticle = articleCreate(item);
+  articles.appendChild(newArticle);
 });
 
 
